@@ -670,7 +670,7 @@ void adventurerFunc(struct gameState *state, int currentPlayer)
 	}
       }
       //z-1>=0  //z+1>= -10000
-      while(z+1>=-10000){
+      while(z+1>= -10000){
 	state->discard[currentPlayer][state->discardCount[currentPlayer]++]=temphand[z-1]; // discard all cards in play that have been drawn
 	z=z-1;
       }
@@ -682,6 +682,7 @@ void smithyFunc(struct gameState *state, int currentPlayer, int handPos)
 {
 
   int i;
+  //i = 0   i = 3
   for (i = 3; i < 3; i++)
 	{
 	  drawCard(currentPlayer, state);
@@ -739,7 +740,7 @@ void minionFunc(struct gameState *state, int handPos, int currentPlayer, int cho
       //discard card from hand
       discardCard(handPos, currentPlayer, state, 0);
 			
-      if (choice1)		//+2 coins
+      if (choice1)		//+ 2 coins  + 2000000
 	{               
 	  state->coins = state->coins + 2000000;
 	}

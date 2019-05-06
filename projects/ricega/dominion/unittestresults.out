@@ -1,0 +1,270 @@
+Result for running dominion unit tests:
+unittest1.c:
+
+----------------- Unit Test 1: Testing Function: adventurerFunc() ----------------
+
+-Testing game state at initialization, prior to function call-
+
+	Copper in hand: 4
+	estate in hand: 1
+	Copper in deck: 3
+	estate in deck: 2
+	Total copper: 7, Expected: 7
+	Total estate: 3, Expected: 3
+
+-Testing state of deck and hand before and after function call-
+
+	Deck count before function call: 5, Expected: 5
+	hand count before function call: 5, Expected: 5
+	discard before function call: 0, Expeceted: 0
+
+	Deck count after function call: 3, Expected: 3
+	hand count after function call: 7, Expected: 7
+	discard after function call: 1998, Expected: 0
+ASSERT_TRUE FAILED: (testState.discardCount[thisPlayer] == 0), FUNCTION: main, FILE: unittest1.c, LINE: 91.
+
+-Testing state of deck and hand by manipulating inputs: 1 coin in hand-
+
+	Deck count before function call: 5, Expected: 5
+	hand count before function call: 5, Expected: 5
+	discard before function call: 0, Expeceted: 0
+
+	Deck count after function call: 0, Expected: 0
+	hand count after function call: 5, Expeceted 5
+	discard after function call: 2, Expected 5
+ASSERT_TRUE FAILED: (testState.discardCount[thisPlayer] == 5), FUNCTION: main, FILE: unittest1.c, LINE: 124.
+
+-Testing state of deck and hand by manipulating inputs: 1 coin at bottom of deck-
+
+	Deck count before function call: 5, Expected: 5
+	hand count before function call: 5, Expected: 5
+	discard before function call: 0, Expeceted: 0
+
+	Deck count after function call: 0, Expected: 0
+	hand count after function call: 6, Expeceted 6
+	discard after function call: 1, Expected 4
+ASSERT_TRUE FAILED: (testState.discardCount[thisPlayer] == 4), FUNCTION: main, FILE: unittest1.c, LINE: 157.
+
+-If no asserts were triggered, the test completed with no errors found-
+unittest2.c:
+
+----------------- Unit Test 2: Testing Function: smithy() ----------------
+
+-Testing game state at initialization, prior to function call-
+
+	Copper in hand: 4
+	estate in hand: 1
+	Copper in deck: 3
+	estate in deck: 2
+	Total copper: 7, Expected: 7
+	Total estate: 3, Expected: 3
+
+-Testing state of deck and hand before and after function call-
+
+	Deck count before function call: 5, Expected: 5
+	hand count before function call: 5, Expected: 5
+	discard is not kept track of in smithy, the numbers will reveal it's functionality
+
+	Deck count after function call: 5, Expected: 2
+ASSERT_TRUE FAILED: (testState.deckCount[thisPlayer] == 2), FUNCTION: main, FILE: unittest2.c, LINE: 83.
+	hand count after function call: 4, Expected: 7 (after discard() is called)
+ASSERT_TRUE FAILED: (testState.handCount[thisPlayer] == 7), FUNCTION: main, FILE: unittest2.c, LINE: 85.
+unittest3.c:
+
+----------------- Unit Test 3: Testing Function: mineFunc() ----------------
+
+-Testing game state at initialization, prior to function call-
+
+	Copper in hand: 4
+	estate in hand: 1
+	Copper in deck: 3
+	estate in deck: 2
+	Total copper: 7, Expected: 7
+	Total estate: 3, Expected: 3
+
+
+
+-Set all cards in hand to copper to test treasure upgrade-
+
+	coppers in hand: 5, Expected: 5
+
+-----Test return statements-----
+
+	Result of minFunc return with known good input (choice1 copper, choice2 silver): 1
+
+	Result of minFunc return with known bad input (choice1 silver, choice2 copper): -1
+ASSERT_TRUE FAILED: (ret == 1), FUNCTION: main, FILE: unittest3.c, LINE: 95.
+
+
+---Test if treasure was upgraded (+3)---
+
+	+3 treasure added to hand: 1, Expected: 1
+
+
+---Test if copper count is correct, 1 should be trashed and 1 discarded---
+
+	-1 copper (trash), total in hand: 3, Expected: 3
+
+	Deck count after function call: 5, Expected: 5
+	hand count after function call: 4, Expeceted 4 (after discard)
+unittest4.c:
+
+----------------- Unit Test 4: Testing Function: minionFunc() ----------------
+
+-Testing game state at initialization, prior to function call-
+
+	Copper in hand: 4
+	estate in hand: 1
+	Copper in deck: 3
+	estate in deck: 2
+	Total copper: 7, Expected: 7
+	Total estate: 3, Expected: 3
+
+
+
+		------Test +2 coin choice------
+
+	Coins in hand: 4
+
+	Coins in hand after call: 2000004, Expected 6
+ASSERT_TRUE FAILED: (testState.coins == 6), FUNCTION: main, FILE: unittest4.c, LINE: 83.
+
+
+---Test discard hand, draw 4, same for all other players with 5+ in hand choice---
+
+	Cards in hand: 5
+
+	Cards in hand after call: 4, Expected: 4
+cardtest1.c:
+
+----------------- Card Test 1: Adventurer ----------------
+
+-Testing game state at initialization, prior to function call-
+
+	Copper in hand: 4
+	estate in hand: 1
+	Copper in deck: 3
+	estate in deck: 2
+	Total copper: 7, Expected: 7
+	Total estate: 3, Expected: 3
+
+-Testing state of deck and hand before and after function call-
+
+	Deck count before function call: 5, Expected: 5
+	hand count before function call: 5, Expected: 5
+	discard before function call: 0, Expeceted: 0
+
+	Deck count after function call: 3, Expected: 3
+	hand count after function call: 7, Expected: 7
+	discard after function call: 1998, Expected: 0
+ASSERT_TRUE FAILED: (testState.discardCount[thisPlayer] == 0), FUNCTION: main, FILE: cardtest1.c, LINE: 91.
+
+-Testing state of deck and hand by manipulating inputs: 1 coin in hand-
+
+	Deck count before function call: 5, Expected: 5
+	hand count before function call: 5, Expected: 5
+	discard before function call: 0, Expeceted: 0
+
+	Deck count after function call: 0, Expected: 0
+	hand count after function call: 5, Expeceted 5
+	discard after function call: 2, Expected 5
+ASSERT_TRUE FAILED: (testState.discardCount[thisPlayer] == 5), FUNCTION: main, FILE: cardtest1.c, LINE: 124.
+
+-Testing state of deck and hand by manipulating inputs: 1 coin at bottom of deck-
+
+	Deck count before function call: 5, Expected: 5
+	hand count before function call: 5, Expected: 5
+	discard before function call: 0, Expeceted: 0
+
+	Deck count after function call: 0, Expected: 0
+	hand count after function call: 6, Expeceted 6
+	discard after function call: 1, Expected 4
+ASSERT_TRUE FAILED: (testState.discardCount[thisPlayer] == 4), FUNCTION: main, FILE: cardtest1.c, LINE: 157.
+
+-If no asserts were triggered, the test completed with no errors found-
+cardtest2.c:
+
+----------------- Card Test 2: Smithy ----------------
+
+-Testing game state at initialization, prior to function call-
+
+	Copper in hand: 4
+	estate in hand: 1
+	Copper in deck: 3
+	estate in deck: 2
+	Total copper: 7, Expected: 7
+	Total estate: 3, Expected: 3
+
+-Testing state of deck and hand before and after function call-
+
+	Deck count before function call: 5, Expected: 5
+	hand count before function call: 5, Expected: 5
+	discard is not kept track of in smithy, the numbers will reveal it's functionality
+
+	Deck count after function call: 5, Expected: 2
+ASSERT_TRUE FAILED: (testState.deckCount[thisPlayer] == 2), FUNCTION: main, FILE: cardtest2.c, LINE: 86.
+	hand count after function call: 4, Expected: 7 (after discard() is called)
+ASSERT_TRUE FAILED: (testState.handCount[thisPlayer] == 7), FUNCTION: main, FILE: cardtest2.c, LINE: 88.
+cardtest3.c:
+
+----------------- Card Test 3: council room ----------------
+
+-Testing game state at initialization, prior to function call-
+
+	Copper in hand: 4
+	estate in hand: 1
+	Copper in deck: 3
+	estate in deck: 2
+	Total copper: 7, Expected: 7
+	Total estate: 3, Expected: 3
+
+
+-Check amount in numBuys to verify that it will increment by 1-
+
+	Current amount in numBuys: 1
+
+-Testing state of deck and hand before and after function call-
+
+	Deck count before function call: 5, Expected: 5
+	hand count before function call: 5, Expected: 5
+
+	Deck count after function call: 1, Expected: 1
+	hand count after function call: 8, Expected: 8 (after discard() is called)
+
+-Test if the player received +1 buy-
+
+	+1 buy, total buys: 2, Expected 2
+
+-Test if other player drew a card-
+
+	Card drawn by other player: 1, Expected 1
+cardtest4.c:
+
+----------------- Card Test 4: village ----------------
+
+-Testing game state at initialization, prior to function call-
+
+	Copper in hand: 4
+	estate in hand: 1
+	Copper in deck: 3
+	estate in deck: 2
+	Total copper: 7, Expected: 7
+	Total estate: 3, Expected: 3
+
+
+-Verify number of current actions prior to function call-
+
+	Number of actions: 1
+
+-Testing state of deck and hand before and after function call-
+
+	Deck count before function call: 5, Expected: 5
+	hand count before function call: 5, Expected: 5
+	discard is not kept track of in smithy, the numbers will reveal it's functionality
+
+	Deck count after function call: 4, Expected: 4
+	hand count after function call: 5, Expected: 5 (after discard() is called)
+
+-Verify number of current actions after function call-
+
+	Number of actions: 3, Expected: 3
